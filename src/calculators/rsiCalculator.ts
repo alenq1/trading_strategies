@@ -1,12 +1,18 @@
-const RSI = require('technicalindicators').RSI;
+// const RSI = require('technicalindicators').RSI;
+import { RSI as RSIInterface } from 'technicalindicators';
 
-const calculateRSI = (prices, divergencePeriod) => {  
+interface RSIInput {
+  closedPrices: number[],
+  divergencePeriod: number
+}
+
+export const calculateRSI = ({closedPrices, divergencePeriod}:RSIInput) => {  
   const inputRSI = {
-    values: prices,
+    values: closedPrices,
     period: 14
   };
-  const rsi = RSI.calculate(inputRSI);  
-  const lastPrices = prices.slice(divergencePeriod);
+  const rsi = RSIInterface.calculate(inputRSI);  
+  const lastPrices = closedPrices.slice(divergencePeriod);
   const lastRsi = rsi.slice(divergencePeriod);
 
   // Detectar divergencias
@@ -24,4 +30,3 @@ const calculateRSI = (prices, divergencePeriod) => {
   };
 };
 
-module.exports = calculateRSI;

@@ -1,7 +1,13 @@
-const notifier = require('node-notifier');
-const path = require('path');
+import notifier from 'node-notifier';
+import path from 'path';
 
-function sendDesktopAlert(title, message, icon) {
+interface DesktopAlertInput {
+    title: string,
+    message: string,
+    icon?: string
+}
+
+export function sendDesktopAlert({title, message, icon}: DesktopAlertInput) {
     notifier.notify({
         title,
         message,
@@ -12,11 +18,10 @@ function sendDesktopAlert(title, message, icon) {
         open: 'https://es.tradingview.com/',
 
     },
-    function (err, response) {
+    function (err: any, response: any) {
         console.log(response);
     }
     );
 
 }
 
-module.exports = sendDesktopAlert;
