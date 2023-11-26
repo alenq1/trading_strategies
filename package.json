@@ -1,0 +1,15 @@
+{
+  "name": "mi-app-bitcoin",
+  "version": "1.0.0",
+  "description": "Una aplicación para conocer el precio de bitcoin utilizando la API de Binance",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "mathjs": "^12.0.0",
+    "node-notifier": "^9.0.1",
+    "technicalindicators": "^3.1.0"
+  }
+}
